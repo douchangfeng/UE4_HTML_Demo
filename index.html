@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";border-radius:25px;transform: translate3d(0,0,0);
+     background-color:rgba(255, 255, 255, 0);}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=47dc8c8d2e831550e401cd31da9d6fa7"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+	<title>添加动画标注点</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+
+
+	// 百度地图API功能
+    var map = new BMap.Map("allmap", {minZoom: 13,maxZoom: 21 });
+    var lng = 119.117454;
+    var lat = 36.748856;
+    var point = new BMap.Point(lng, lat);
+	map.centerAndZoom(point,18);
+  
+    ue.testobject.getlngandlat(lng + "", lat + "").then(function () {
+
+    });  
+		function showInfo(e){	    
+		ue.testobject.maptouchfunction().then(function()
+		{
+			});     		  
+	}
+	map.addEventListener("click", showInfo);
+	map.enableScrollWheelZoom(true);
+	map.enablePinchToZoom(true);
+    var opts = { type: BMAP_NAVIGATION_CONTROL_LARGE, showZoomInfo:false };
+	var control = new BMap.NavigationControl(opts);
+    map.addControl(control);
+
+
+
+	document.onreadystatechange = function () {
+   
+		if (document.readyState == "complete") { //当页面加载状态为完全结束时进入 
+
+            var myStyleJson = [{
+                "featureType": "poilabel",
+                "elementType": "labels",
+                "stylers": {
+                    "visibility": "off"
+                }
+            }, {
+                "featureType": "poilabel",
+                "elementType": "labels.icon",
+                "stylers": {
+                    "visibility": "off"
+                }
+            }, {
+                "featureType": "districtlabel",
+                "elementType": "labels",
+                "stylers": {
+                    "visibility": "off"
+                }
+            }, {
+                "featureType": "districtlabel",
+                "elementType": "labels.icon",
+                "stylers": {
+                    "visibility": "off"
+                }
+            }];
+            map.setMapStyle({ styleJson: myStyleJson });
+              //你要做的操作。
+            // map.setMapStyleV2({
+           //     styleId: '496715dd00020c59dbae3719c3f8c0cf'
+			// });
+             setTimeout(function () {
+                ue.testobject.mapcomplete().then(function () {
+                 });
+             }, 1000);
+    }
+     
+  
+    }
+
+
+  //var bound = new BMap.Bounds(new BMap.Point(119.09, 36.60), new BMap.Point(119.15, 36.80)); // 范围 左下角，右上角的点位置 
+  //ry {    // js中尽然还有try catch方法，可以避免bug引起的错误
+  //  BMapLib.AreaRestriction.setBounds(map, bound); // 已map为中心，已b为范围的地图
+ // catch (e) {
+        // 捕获错误异常
+ //  alert(e);
+   //}
+  
+</script>
